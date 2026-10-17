@@ -1,0 +1,27 @@
+JAWS-THEMED PARK - Blender visualisation
+========================================
+1. Open Blender (4.x or 5.x). Start a new General file.
+2. Top tabs > Scripting. In the text editor: Open > jaws_ride.py > Run Script (Alt+P).
+   (It deletes whatever is in the scene and builds the whole park, ~1-2 s.)
+3. Press Space to play. Switch Viewport Shading to "Rendered" (Z key) to see lights/screens.
+4. Cameras (Outliner > "08 Cameras", select one, Ctrl+Numpad0 to look through it):
+     CAM rider POV (back row)         - what guests see
+     CAM chase (right-rear)           - follows the boat, best for showing people
+     CAM motion base (underwater)     - the 4 hydraulic arms working
+     CAM overview (hall corner)
+     CAM dolphin night show
+5. Timeline markers = every sound / voice cue. Text editor > SHOW_CUE_SHEET.csv = full cue list,
+   SHOW_CUE_SHEET_actuator_report.txt = arm stroke check.
+
+Settings at the top of the script (section 1):
+  MODE = "SHOW" or "MAINTENANCE"          (maintenance = lagoon drains into dolphin tank, refills by day)
+  SIMULATE_BELT_FAULT = {"seat": 7, "time": 60.0}   -> watch the E-STOP: daylight, brake, rigs home
+  VIEW = "ENGINEERING" or "GUEST"         (guest = authentic darkness, only cue-lit scenes visible)
+  SIDE_SCREEN_STORY = True / False        (blackout: story on side screens or pitch black)
+  SIGN_TEXT = "YOUR SIGN"                 (the light sign at the dolphin tank)
+  TRACK_PTS / UNLOAD_INDEX               (the track shape: drag points around, the scenes re-place
+                                          themselves; see track_plan.png for the current layout)
+  SHARK_KIND                              ("full" / "head" / "fin" per shark rig)
+  All sizes/speeds are SI and editable; the layout re-derives itself from the ride program.
+
+Render: Eevee for speed. If Eevee is slow/black on your machine, Render Properties > Cycles.
